@@ -23,3 +23,14 @@
 # IDE files
 .vscode/
 .idea/
+# Python environment and sensitive configuration
+**/venv/
+**/.pytest_cache/
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.*
+!.env.example
