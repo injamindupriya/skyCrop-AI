@@ -1,0 +1,25 @@
+
+# Frontend dependencies
+**/node_modules/
+
+# Build folders
+**/dist/
+**/build/
+
+# Python environment
+**/venv/
+**/.venv/
+**/__pycache__/
+*.pyc
+
+# Java build output
+**/target/
+
+# Secrets
+**/.env
+**/.env.*
+!**/.env.example
+
+# IDE files
+.vscode/
+.idea/

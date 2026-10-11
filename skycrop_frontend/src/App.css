@@ -1,0 +1,610 @@
+
+/* =========================================
+   1. GLOBAL STYLES
+========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f3f8f1;
+  color: #243324;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+button {
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #70b77b;
+  outline-offset: 2px;
+}
+
+/* =========================================
+   2. APP LAYOUT
+========================================= */
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-main {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+/* =========================================
+   3. HEADER
+========================================= */
+
+.app-header {
+  background: linear-gradient(135deg, #174d2a, #39864e);
+  color: #ffffff;
+  padding: 30px 20px;
+  text-align: center;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+}
+
+.app-header h1 {
+  margin: 0 0 10px;
+  font-size: 36px;
+  letter-spacing: 1px;
+}
+
+.app-header p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #e5f5e5;
+}
+
+/* =========================================
+   4. CROP ANALYSIS SECTION
+========================================= */
+
+.crop-analysis-section,
+.crop-history-section,
+.weather-section {
+  margin-bottom: 24px;
+}
+
+.crop-analysis-section {
+  background: #ffffff;
+  padding: 28px;
+  border: 1px solid #e1ebdd;
+  border-radius: 14px;
+  box-shadow: 0 5px 18px rgba(35, 107, 59, 0.08);
+}
+
+.crop-analyzer {
+  width: 100%;
+  color: #243324;
+}
+
+.crop-analyzer h2 {
+  color: #236b3b;
+  margin: 0 0 12px;
+  font-size: 26px;
+}
+
+.crop-analyzer h3,
+.crop-analyzer h4 {
+  color: #236b3b;
+}
+
+.crop-analyzer p {
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.crop-analyzer .form-group {
+  margin: 22px 0;
+}
+
+.crop-analyzer label {
+  display: block;
+  margin-bottom: 9px;
+  font-weight: 600;
+  color: #2e4830;
+}
+
+.crop-analyzer select,
+.crop-analyzer input[type="file"] {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  padding: 12px;
+  border: 1px solid #cbd9c5;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #243324;
+  font-size: 15px;
+}
+
+.crop-analyzer input[type="file"] {
+  cursor: pointer;
+}
+
+.crop-analyzer .image-preview {
+  margin-top: 24px;
+}
+
+.crop-analyzer .image-preview img {
+  display: block;
+  max-width: 100%;
+  border: 1px solid #d5e5d2;
+  border-radius: 10px;
+  padding: 5px;
+  background: #f8faf7;
+}
+
+.crop-analyzer .image-preview p {
+  color: #647464;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.crop-analyzer button {
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+.crop-analyzer button:hover:not(:disabled) {
+  background: #174d2a !important;
+  transform: translateY(-1px);
+}
+
+.crop-analyzer button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.crop-analyzer .analysis-result {
+  margin-top: 28px;
+  padding: 22px;
+  border: 1px solid #cfe3ca;
+  border-radius: 12px;
+  background: #f7fbf5;
+  overflow-wrap: anywhere;
+}
+
+.crop-analyzer .analysis-result h3 {
+  margin-top: 0;
+}
+
+.crop-analyzer .analysis-result ul {
+  padding-left: 22px;
+  line-height: 1.8;
+}
+
+.crop-analyzer .analysis-result small {
+  color: #647464;
+}
+
+/* =========================================
+   5. CROP HISTORY
+========================================= */
+
+.crop-history-section {
+  padding: 25px;
+  background: #ffffff;
+  border: 1px solid #e1ebdd;
+  border-radius: 14px;
+  box-shadow: 0 5px 18px rgba(35, 107, 59, 0.06);
+}
+
+.crop-history {
+  width: 100%;
+}
+
+.crop-history h2 {
+  color: #236b3b;
+}
+
+.history-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.history-heading h2 {
+  margin-top: 0;
+}
+
+.history-heading button {
+  background: #236b3b;
+  color: #ffffff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.history-heading button:hover {
+  background: #174d2a;
+}
+
+.history-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.history-card {
+  padding: 16px;
+  margin-top: 14px;
+  border: 1px solid #d5e5d2;
+  border-radius: 10px;
+  background: #f7fbf5;
+  overflow-wrap: anywhere;
+}
+
+.history-card h3 {
+  color: #236b3b;
+  margin-top: 0;
+}
+
+.history-card p {
+  line-height: 1.6;
+}
+
+.history-error {
+  color: #b42318;
+}
+
+/* =========================================
+   6. WEATHER PANEL
+========================================= */
+
+.weather-section {
+  margin-top: 25px;
+}
+
+.weather-panel {
+  padding: 25px;
+  background: #ffffff;
+  border: 1px solid #dce9d8;
+  border-radius: 14px;
+  box-shadow: 0 5px 18px rgba(35, 107, 59, 0.08);
+}
+
+.weather-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.weather-heading h2 {
+  color: #236b3b;
+  margin-top: 0;
+}
+
+.weather-heading button {
+  background: #236b3b;
+  color: #ffffff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.weather-heading button:hover {
+  background: #174d2a;
+}
+
+.weather-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.weather-item {
+  padding: 16px;
+  background: #f3f8f1;
+  border: 1px solid #e1ebdd;
+  border-radius: 10px;
+  overflow-wrap: anywhere;
+}
+
+.weather-label {
+  display: block;
+  color: #627462;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.weather-item strong {
+  color: #236b3b;
+  font-size: 18px;
+}
+
+.weather-error {
+  color: #b42318;
+}
+
+.weather-note {
+  color: #647464;
+  font-size: 13px;
+  margin-top: 18px;
+}
+
+/* =========================================
+   7. FARM OPERATIONS DASHBOARD
+========================================= */
+
+.farm-dashboard {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.farm-dashboard-heading {
+  grid-column: 1 / -1;
+}
+
+.farm-dashboard-heading h2 {
+  color: #236b3b;
+  margin: 0 0 8px;
+  font-size: 27px;
+}
+
+.farm-dashboard-heading p {
+  color: #627462;
+  line-height: 1.6;
+}
+
+.farm-panel {
+  min-width: 0;
+  padding: 22px;
+  background: #ffffff;
+  border: 1px solid #dce9d8;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(35, 107, 59, 0.06);
+}
+
+.farm-panel h2 {
+  margin-top: 0;
+  color: #236b3b;
+  font-size: 21px;
+  line-height: 1.4;
+}
+
+.farm-panel p {
+  line-height: 1.6;
+}
+
+.farm-panel label {
+  display: block;
+  margin: 15px 0 7px;
+  font-weight: 600;
+  color: #2e4830;
+}
+
+.farm-panel input,
+.farm-panel select,
+.farm-panel textarea {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  padding: 11px;
+  border: 1px solid #cbd9c5;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #243324;
+  font-size: 15px;
+}
+
+.farm-panel textarea {
+  resize: vertical;
+}
+
+.farm-panel button {
+  margin: 12px 8px 8px 0;
+  padding: 11px 15px;
+  border: none;
+  border-radius: 8px;
+  background: #236b3b;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.farm-panel button:hover:not(:disabled) {
+  background: #174d2a;
+  transform: translateY(-1px);
+}
+
+.farm-panel button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Dashboard data cards */
+
+.farm-data-grid,
+.farm-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.farm-data-item,
+.farm-record {
+  min-width: 0;
+  padding: 13px;
+  border: 1px solid #e1ebdd;
+  border-radius: 9px;
+  background: #f7fbf5;
+  overflow-wrap: anywhere;
+}
+
+.farm-data-item span {
+  display: block;
+  margin-bottom: 7px;
+  color: #627462;
+  text-transform: capitalize;
+  font-size: 13px;
+}
+
+.farm-data-item strong {
+  color: #236b3b;
+  overflow-wrap: anywhere;
+}
+
+.farm-record-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.farm-record p {
+  margin: 5px 0;
+  line-height: 1.6;
+}
+
+.farm-error {
+  margin-top: 14px;
+  padding: 12px;
+  color: #a32121;
+  background: #fff0f0;
+  border: 1px solid #f3c5c5;
+  border-radius: 8px;
+  overflow-wrap: anywhere;
+}
+
+.farm-note {
+  grid-column: 1 / -1;
+  color: #627462;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* =========================================
+   8. FOOTER
+========================================= */
+
+.app-footer {
+  margin-top: auto;
+  padding: 22px 15px;
+  text-align: center;
+  background: #e7f0e3;
+  color: #526052;
+  font-size: 14px;
+}
+
+.app-footer p {
+  margin: 0;
+}
+
+.app-footer small {
+  display: block;
+  margin-top: 8px;
+  line-height: 1.6;
+}
+
+/* =========================================
+   9. RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 800px) {
+  .farm-dashboard {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .farm-dashboard-heading,
+  .farm-note {
+    grid-column: auto;
+  }
+
+  .history-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .app-header {
+    padding: 22px 14px;
+  }
+
+  .app-header h1 {
+    font-size: 28px;
+  }
+
+  .app-header p {
+    font-size: 14px;
+  }
+
+  .app-main {
+    margin: 20px auto;
+    padding: 0 12px;
+  }
+
+  .crop-analysis-section,
+  .crop-history-section,
+  .weather-panel,
+  .farm-panel {
+    padding: 16px;
+  }
+
+  .crop-analyzer h2 {
+    font-size: 22px;
+  }
+
+  .crop-analyzer select,
+  .crop-analyzer input[type="file"] {
+    max-width: 100%;
+  }
+
+  .crop-analyzer .analysis-result {
+    padding: 15px;
+  }
+
+  .weather-content {
+    grid-template-columns: 1fr;
+  }
+
+  .farm-data-grid,
+  .farm-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .farm-dashboard-heading h2 {
+    font-size: 23px;
+  }
+
+  .farm-panel h2 {
+    font-size: 19px;
+  }
+}
