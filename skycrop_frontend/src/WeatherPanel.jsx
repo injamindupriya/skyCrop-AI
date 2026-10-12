@@ -12,7 +12,7 @@ function WeatherPanel() {
 
     try {
       const response = await fetch(
-        "http://localhost:8081/api/weather"
+      "https://skycrop-ai-2.onrender.com/api/weather"
       );
 
       if (!response.ok) {
