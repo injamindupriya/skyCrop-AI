@@ -57,7 +57,7 @@ function CropAnalyzer() {
       formData.append("crop", crop);
 
       const response = await fetch(
-        "http://localhost:8081/api/crop/analyze",
+        "https://skycrop-ai-2.onrender.com/api/crop/analyze",
         {
           method: "POST",
           body: formData,
