@@ -1,3 +1,4 @@
+
 package com.skycrop.api;
 
 import org.springframework.context.annotation.Bean;
@@ -16,7 +17,8 @@ public class WebConfig {
                 registry.addMapping("/**")
                         .allowedOrigins(
                                 "http://localhost:5173",
-                                "http://127.0.0.1:5173"
+                                "http://127.0.0.1:5173",
+                                "https://sky-crop-ai.vercel.app"
                         )
                         .allowedMethods(
                                 "GET", "POST", "PUT", "DELETE", "OPTIONS"
