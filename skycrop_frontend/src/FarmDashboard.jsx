@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 
 const API = "https://skycrop-ai-2.onrender.com/api";
-
 async function apiRequest(path, options = {}) {
   const response = await fetch(`${API}${path}`, {
     ...options,
