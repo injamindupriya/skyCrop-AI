@@ -12,7 +12,7 @@ function CropHistory() {
 
     try {
       const response = await fetch(
-        https://skycrop-ai-2.onrender.com/api/crop/history
+        "https://skycrop-ai-2.onrender.com/api/crop/history"
       );
 
       if (!response.ok) {
@@ -21,11 +21,19 @@ function CropHistory() {
 
       const data = await response.json();
 
-      setHistory(Array.isArray(data) ? data : data.history || []);
+      setHistory(
+        Array.isArray(data)
+          ? data
+          : Array.isArray(data.items)
+            ? data.items
+            : Array.isArray(data.history)
+              ? data.history
+              : []
+      );
     } catch (err) {
       setError(
         err.message ||
-          "Cannot connect to the backend. Check that Spring Boot is running."
+          "Cannot connect to the backend. Please try again."
       );
     } finally {
       setLoading(false);
@@ -51,26 +59,19 @@ function CropHistory() {
       {error && <p className="history-error">{error}</p>}
 
       {!loading && !error && history.length === 0 && (
-        <p>No crop analyses recorded yet. Upload a leaf image first.</p>
+        <p>No crop analysis history available yet.</p>
       )}
 
       {!loading && !error && history.length > 0 && (
         <div className="history-list">
           {history.map((item, index) => (
             <article
-              className="history-card"
-              key={item.id ?? index}
+              className="history-item"
+              key={item.id ?? item.createdAt ?? index}
             >
-              <h3>{item.crop || "Unknown crop"}</h3>
-
-              <p>
-                <strong>Status:</strong>{" "}
-                {item.result || item.status || "Submitted"}
-              </p>
-
-              {item.modelStatus && (
+              {item.crop && (
                 <p>
-                  <strong>AI model:</strong> {item.modelStatus}
+                  <strong>Crop:</strong> {item.crop}
                 </p>
               )}
 
@@ -91,3 +92,5 @@ function CropHistory() {
 }
 
 export default CropHistory;
+
+
