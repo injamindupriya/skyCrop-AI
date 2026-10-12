@@ -12,7 +12,7 @@ function CropHistory() {
 
     try {
       const response = await fetch(
-        "https://skycrop-ai-2.onrender.com/api/crop/history"
+        https://skycrop-ai-2.onrender.com/api/crop/history
       );
 
       if (!response.ok) {
